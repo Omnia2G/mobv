@@ -54,8 +54,9 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation("com.squareup.okhttp3:okhttp:4.2.2")
+    implementation("com.squareup.okhttp3:okhttp:4.9.2")
     implementation("com.mapbox.maps:android:10.16.2")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
 
     val room_version = "2.6.0"
@@ -64,6 +65,6 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
-    implementation("androidx.work:work-runtime-ktx:2.8.1")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
 }

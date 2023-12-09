@@ -3,7 +3,7 @@ package eu.mcomputing.mobv.mobvzadanie.data.api
 import android.content.Context
 import eu.mcomputing.mobv.mobvzadanie.data.api.helper.AuthInterceptor
 import eu.mcomputing.mobv.mobvzadanie.data.api.helper.TokenAuthenticator
-import eu.mcomputing.mobv.mobvzadanie.data.api.model.GeofenceListResponse
+import eu.mcomputing.mobv.mobvzadanie.data.api.model.GeofenceResponse
 import eu.mcomputing.mobv.mobvzadanie.data.api.model.GeofenceUpdateRequest
 import eu.mcomputing.mobv.mobvzadanie.data.api.model.GeofenceUpdateResponse
 import eu.mcomputing.mobv.mobvzadanie.data.api.model.LoginResponse
@@ -47,7 +47,7 @@ interface ApiService {
     ): Call<RefreshTokenResponse>
 
     @GET("geofence/list.php")
-    suspend fun listGeofence(): Response<GeofenceListResponse>
+    suspend fun listGeofence(): Response<GeofenceResponse>
 
     @POST("geofence/update.php")
     suspend fun updateGeofence(@Body body: GeofenceUpdateRequest): Response<GeofenceUpdateResponse>

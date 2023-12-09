@@ -39,13 +39,13 @@ class DataRepository private constructor(
         password: String
     ): Pair<String, User?> {
         if (username.isEmpty()) {
-            return Pair("Username can not be empty", null)
+            return Pair("Username can not be empty! Please provide it.", null)
         }
         if (email.isEmpty()) {
-            return Pair("Email can not be empty", null)
+            return Pair("Email can not be empty! Please provide it.", null)
         }
         if (password.isEmpty()) {
-            return Pair("Password can not be empty", null)
+            return Pair("Password can not be empty! Please provide it.", null)
         }
         try {
             val response = service.registerUser(UserRegistrationRequest(username, email, password))
@@ -63,7 +63,7 @@ class DataRepository private constructor(
                     )
                 }
             }
-            return Pair("Failed to create user", null)
+            return Pair("Failed to create user.", null)
         } catch (ex: IOException) {
             ex.printStackTrace()
             return Pair("Check internet connection. Failed to create user.", null)
@@ -78,10 +78,10 @@ class DataRepository private constructor(
         password: String
     ): Pair<String, User?> {
         if (username.isEmpty()) {
-            return Pair("Username can not be empty", null)
+            return Pair("Username can not be empty! Please provide it.", null)
         }
         if (password.isEmpty()) {
-            return Pair("Password can not be empty", null)
+            return Pair("Password can not be empty! Please provide it.", null)
         }
         try {
             val response = service.loginUser(UserLoginRequest(username, password))
@@ -102,7 +102,7 @@ class DataRepository private constructor(
                     )
                 }
             }
-            return Pair("Failed to login user", null)
+            return Pair("Failed to login user.", null)
         } catch (ex: IOException) {
             ex.printStackTrace()
             return Pair("Check internet connection. Failed to login user.", null)
@@ -120,7 +120,15 @@ class DataRepository private constructor(
 
             if (response.isSuccessful) {
                 response.body()?.let {
-                    return Pair("", User(it.name, "", it.id, "", "", it.photo))
+                    val user = User(it.name, "", it.id, "", "", it.photo)
+                    cache.insertUserItems(
+                        listOf(
+                            UserEntity(
+                                user.id, user.username, "", 0.0, 0.0, 0.0, ""
+                            )
+                        )
+                    )
+                    return Pair("", user)
                 }
             }
 

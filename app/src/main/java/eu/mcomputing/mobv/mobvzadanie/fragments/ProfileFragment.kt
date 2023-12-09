@@ -38,8 +38,9 @@ import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
 import eu.mcomputing.mobv.mobvzadanie.workers.MyWorker
 import java.util.concurrent.TimeUnit
 
-
+import android.provider.Settings
 class ProfileFragment : Fragment() {
+
     private lateinit var viewModel: ProfileViewModel
     private lateinit var binding: FragmentProfileBinding
 
@@ -135,14 +136,21 @@ class ProfileFragment : Fragment() {
             bnd.locationSwitch.isChecked = PreferenceData.getInstance().getSharing(requireContext())
             bnd.locationSwitch.setOnCheckedChangeListener { _, checked ->
                 Log.d("ProfileFragment", "sharing je $checked")
+                val gpsIntent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 if (checked) {
                     turnOnSharing()
+                    startActivity(gpsIntent)
+                    binding.locationSwitch.isChecked = true
                 } else {
                     turnOffSharing()
+                    startActivity(gpsIntent)
+                    binding.locationSwitch.isChecked = false
                 }
             }
         }
     }
+
+
 
     @SuppressLint("MissingPermission")
     private fun turnOnSharing() {

@@ -1,5 +1,6 @@
 package eu.mcomputing.mobv.mobvzadanie.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
     // Táto metóda prepojí dáta s ViewHolderom
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.item_text).text = items[position].name
+        Log.d("wtf", items[position].name)
     }
 
     // Vracia počet položiek v zozname
