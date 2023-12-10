@@ -1,6 +1,7 @@
 package eu.mcomputing.mobv.mobvzadanie.data
 
 import android.content.Context
+import androidx.annotation.RequiresApi
 import eu.mcomputing.mobv.mobvzadanie.data.api.ApiService
 import eu.mcomputing.mobv.mobvzadanie.data.api.model.GeofenceUpdateRequest
 import eu.mcomputing.mobv.mobvzadanie.data.api.model.UserLoginRequest
@@ -11,6 +12,13 @@ import eu.mcomputing.mobv.mobvzadanie.data.db.entities.UserEntity
 import eu.mcomputing.mobv.mobvzadanie.data.model.User
 import venaka.bioapp.data.db.LocalCache
 import java.io.IOException
+import java.security.MessageDigest
+import java.security.SecureRandom
+import java.security.spec.KeySpec
+import java.util.HexFormat
+import javax.crypto.SecretKey
+import javax.crypto.SecretKeyFactory
+import javax.crypto.spec.PBEKeySpec
 
 class DataRepository private constructor(
     private val service: ApiService,
@@ -33,11 +41,8 @@ class DataRepository private constructor(
             }
     }
 
-    suspend fun apiRegisterUser(
-        username: String,
-        email: String,
-        password: String
-    ): Pair<String, User?> {
+
+    suspend fun apiRegisterUser(username: String, email: String, password: String): Pair<String, User?> {
         if (username.isEmpty()) {
             return Pair("Username can not be empty! Please provide it.", null)
         }
@@ -48,7 +53,8 @@ class DataRepository private constructor(
             return Pair("Password can not be empty! Please provide it.", null)
         }
         try {
-            val response = service.registerUser(UserRegistrationRequest(username, email, password))
+            val hashedPw = password.toSHA256()
+            val response = service.registerUser(UserRegistrationRequest(username, email, hashedPw))
             if (response.isSuccessful) {
                 response.body()?.let { json_response ->
                     return Pair(
@@ -73,10 +79,8 @@ class DataRepository private constructor(
         return Pair("Fatal error. Failed to create user.", null)
     }
 
-    suspend fun apiLoginUser(
-        username: String,
-        password: String
-    ): Pair<String, User?> {
+
+    suspend fun apiLoginUser(username: String, password: String): Pair<String, User?> {
         if (username.isEmpty()) {
             return Pair("Username can not be empty! Please provide it.", null)
         }
@@ -84,7 +88,8 @@ class DataRepository private constructor(
             return Pair("Password can not be empty! Please provide it.", null)
         }
         try {
-            val response = service.loginUser(UserLoginRequest(username, password))
+            val hashedPw = password.toSHA256()
+            val response = service.loginUser(UserLoginRequest(username, hashedPw))
             if (response.isSuccessful) {
                 response.body()?.let { json_response ->
                     if (json_response.uid == "-1") {
@@ -112,9 +117,7 @@ class DataRepository private constructor(
         return Pair("Fatal error. Failed to login user.", null)
     }
 
-    suspend fun apiGetUser(
-        uid: String
-    ): Pair<String, User?> {
+    suspend fun apiGetUser(uid: String): Pair<String, User?> {
         try {
             val response = service.getUser(uid)
 
@@ -124,7 +127,7 @@ class DataRepository private constructor(
                     cache.insertUserItems(
                         listOf(
                             UserEntity(
-                                user.id, user.username, "", 0.0, 0.0, 0.0, ""
+                                user.id, user.username, "", 48.134123686140605, 17.2033322430135, 0.0, ""
                             )
                         )
                     )
@@ -151,7 +154,7 @@ class DataRepository private constructor(
                     val users = it.map {
                         UserEntity(
                             it.uid, it.name, it.updated,
-                            0.0, 0.0, it.radius, it.photo
+                            0.0,0.0, it.radius, it.photo
                         )
                     }
                     cache.insertUserItems(users)
@@ -214,5 +217,21 @@ class DataRepository private constructor(
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
+    }
+
+    fun String.toSHA256(): String{
+        val HEX_CHARS = "0123456789ABCDEF"
+        val digest = MessageDigest.getInstance("SHA-256").digest(this.toByteArray())
+        return digest.joinToString(
+            separator = "",
+            transform = { a -> String(
+                charArrayOf(
+                    HEX_CHARS[a.toInt() shr 4 and 0x0f],
+                    HEX_CHARS[a.toInt() and 0x0f]
+                )
+            )
+
+            }
+        )
     }
 }

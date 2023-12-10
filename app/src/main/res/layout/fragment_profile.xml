@@ -11,7 +11,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
 
         <TextView
             android:id="@+id/textView"
@@ -59,17 +60,6 @@
             app:layout_constraintTop_toBottomOf="@id/name"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/gpsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/location_label"
-            app:layout_constraintStart_toStartOf="parent" />
-
 
         <Button
             android:id="@+id/logout_btn"
@@ -77,8 +67,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/gpsTextView"
+            app:layout_constraintTop_toBottomOf="@id/location_switch"
             android:layout_margin="@dimen/activity_horizontal_margin" />
+
+
+        <TextView
+            android:id="@+id/hash_preview"
+            android:text=""
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/holo_green_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logout_btn"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <EditText
+            android:id="@+id/hash"
+            android:layout_width="0dp"
+            android:minHeight="48dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hash_hint"
+            android:text=""
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hash_preview"
+             />
+
+        <Button
+            android:id="@+id/hash_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/ukaz_hash"
+            app:layout_constraintStart_toStartOf="@id/hash"
+            app:layout_constraintTop_toBottomOf="@id/hash" />
 
 
         <eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar

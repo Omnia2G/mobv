@@ -15,7 +15,8 @@ import eu.mcomputing.mobv.mobvzadanie.databinding.FragmentFeedBinding
 import eu.mcomputing.mobv.mobvzadanie.viewmodels.FeedViewModel
 import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
 
-class FeedFragment : Fragment() {
+class
+FeedFragment : Fragment() {
     private lateinit var viewModel: FeedViewModel
     private lateinit var binding: FragmentFeedBinding
 

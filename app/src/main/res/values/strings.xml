@@ -18,4 +18,6 @@
     <string name="profile">Profile</string>
     <string name="nacitaj_profil">Nacitaj profil</string>
     <string name="odhlasit_sa">Odhlasit sa</string>
+    <string name="ukaz_hash">Ukaz hash</string>
+    <string name="hash_hint">Heslo</string>
 </resources>

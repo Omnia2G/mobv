@@ -37,8 +37,10 @@ import eu.mcomputing.mobv.mobvzadanie.viewmodels.ProfileViewModel
 import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
 import eu.mcomputing.mobv.mobvzadanie.workers.MyWorker
 import java.util.concurrent.TimeUnit
-
 import android.provider.Settings
+import java.security.MessageDigest
+
+
 class ProfileFragment : Fragment() {
 
     private lateinit var viewModel: ProfileViewModel
@@ -147,10 +149,30 @@ class ProfileFragment : Fragment() {
                     binding.locationSwitch.isChecked = false
                 }
             }
+
+            bnd.hashBtn.setOnClickListener {
+                val pw =  binding.hash.text.toString().toSHA256()
+                binding.hashPreview.text = pw
+            }
         }
+
     }
 
+    fun String.toSHA256(): String{
+        val HEX_CHARS = "0123456789ABCDEF"
+        val digest = MessageDigest.getInstance("SHA-256").digest(this.toByteArray())
+        return digest.joinToString(
+            separator = "",
+            transform = { a -> String(
+                charArrayOf(
+                    HEX_CHARS[a.toInt() shr 4 and 0x0f],
+                    HEX_CHARS[a.toInt() and 0x0f]
+                )
+            )
 
+            }
+        )
+    }
 
     @SuppressLint("MissingPermission")
     private fun turnOnSharing() {

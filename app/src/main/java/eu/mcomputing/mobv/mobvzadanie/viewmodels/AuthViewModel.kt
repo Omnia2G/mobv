@@ -1,5 +1,6 @@
 package eu.mcomputing.mobv.mobvzadanie.viewmodels
 
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,6 +24,7 @@ class AuthViewModel(private val dataRepository: DataRepository) : ViewModel() {
     val password = MutableLiveData<String>()
     val repeat_password = MutableLiveData<String>()
 
+
     fun registerUser() {
         viewModelScope.launch {
             val result = dataRepository.apiRegisterUser(
@@ -34,6 +36,7 @@ class AuthViewModel(private val dataRepository: DataRepository) : ViewModel() {
             _userResult.postValue(result.second)
         }
     }
+
 
     fun loginUser() {
         viewModelScope.launch {
