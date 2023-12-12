@@ -9,13 +9,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/moonstone">
+        android:background="@color/lemon">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zadanie"
+            android:textSize="28sp"
+
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_login"
+            android:contentDescription="@string/login_button"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toStartOf="@+id/signup"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_signup"
+            android:contentDescription="@string/signup_button"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:layout_constraintStart_toEndOf="@+id/login"
             app:layout_constraintEnd_toEndOf="parent" />

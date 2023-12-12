@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/moonstone">
+        android:background="@color/lemon">
 
         <TextView
             android:id="@+id/textView"
@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:text="@string/profile"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@id/load_profile_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/load_profile_btn" />
@@ -30,6 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:text="@{model.userResult.username}"
+            android:textSize="20sp"
+            android:textColor="@color/chilired"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView" />
 
@@ -47,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:text="Share my location"
+            android:text="@string/share_my_location"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@id/location_switch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/location_switch" />
@@ -67,40 +71,50 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:text="@string/odhlasit_sa"
+            android:contentDescription="@string/logout_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/location_switch" />
 
 
         <TextView
             android:id="@+id/hash_preview"
-            android:layout_width="250dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_marginStart="16dp"
             android:text=""
             android:textColor="@android:color/holo_green_dark"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logout_btn" />
+            app:layout_constraintTop_toBottomOf="@id/logout_btn"
+            app:layout_constraintVertical_bias="0.44" />
 
         <EditText
             android:id="@+id/hash"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:hint="@string/hash_hint"
             android:minHeight="48dp"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:text=""
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hash_preview" />
+            app:layout_constraintTop_toBottomOf="@id/hash_preview"
+            android:inputType="text"
+            android:importantForAutofill="no" />
+
 
         <Button
             android:id="@+id/hash_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
             android:text="@string/ukaz_hash"
+            android:contentDescription="@string/show_hash_button"
             app:layout_constraintStart_toStartOf="@id/hash"
             app:layout_constraintTop_toBottomOf="@id/hash" />
-
 
         <eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
             android:id="@+id/bottom_bar"

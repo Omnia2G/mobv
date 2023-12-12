@@ -10,7 +10,7 @@
     <string name="zadajte_email">Zadajte email</string>
     <string name="username">Username:</string>
     <string name="zadajte_username">Zadajte username</string>
-    <string name="heslo">Heslo</string>
+    <string name="heslo">Heslo:</string>
     <string name="zadajte_heslo">Zadajte heslo</string>
     <string name="zopakujte_heslo">Zopakujte heslo</string>
     <string name="registruj_sa">Registruj sa</string>
@@ -21,4 +21,11 @@
     <string name="ukaz_hash">Ukaz hash</string>
     <string name="hash_hint">Heslo</string>
     <string name="zadanie">Zadanie</string>
+    <string name="login_button">login button</string>
+    <string name="signup_button">signup button</string>
+    <string name="submit_login">submit login</string>
+    <string name="share_my_location">Share my location</string>
+    <string name="logout_button">logout button</string>
+    <string name="show_hash_button">show hash button</string>
+    <string name="feed_profile_picture">feed profile picture</string>
 </resources>

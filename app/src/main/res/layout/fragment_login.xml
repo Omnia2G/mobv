@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/moonstone">
+        android:background="@color/lemon">
 
         <TextView
             android:id="@+id/header_title"
@@ -22,7 +22,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="28sp"
             android:text="@string/title_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="@string/username"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/header_title" />
 
@@ -47,13 +48,16 @@
             android:text="@={model.username}"
             app:layout_constraintTop_toBottomOf="@+id/label_username"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textPassword"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/label_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/heslo"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_username" />
 
@@ -66,7 +70,9 @@
             android:text="@={model.password}"
             app:layout_constraintTop_toBottomOf="@+id/label_password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:importantForAutofill="no"
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/submit_button"
@@ -74,6 +80,7 @@
             android:layout_height="wrap_content"
             android:text="@string/prihlasit_sa"
             android:onClick="@{()->model.loginUser()}"
+            android:contentDescription="@string/submit_login"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

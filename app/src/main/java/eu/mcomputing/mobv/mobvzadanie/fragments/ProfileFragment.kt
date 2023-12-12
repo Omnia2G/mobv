@@ -38,6 +38,7 @@ import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
 import eu.mcomputing.mobv.mobvzadanie.workers.MyWorker
 import java.util.concurrent.TimeUnit
 import android.provider.Settings
+import eu.mcomputing.mobv.mobvzadanie.workers.NotificationWorker
 import java.security.MessageDigest
 
 
@@ -92,6 +93,7 @@ class ProfileFragment : Fragment() {
                 return ProfileViewModel(DataRepository.getInstance(requireContext())) as T
             }
         })[ProfileViewModel::class.java]
+        scheduleNotificationWorker()
     }
 
     override fun onCreateView(
@@ -206,6 +208,14 @@ class ProfileFragment : Fragment() {
         removeGeofence()
     }
 
+    private fun scheduleNotificationWorker() {
+        val repeatingRequest = PeriodicWorkRequestBuilder<NotificationWorker>(
+            15, TimeUnit.SECONDS // Repeat every 15 minutes
+        ).build()
+
+        WorkManager.getInstance(requireContext()).enqueue(repeatingRequest)
+    }
+
     @SuppressLint("MissingPermission")
     private fun setupGeofence(location: Location) {
 
@@ -263,7 +273,7 @@ class ProfileFragment : Fragment() {
             .build()
 
         val repeatingRequest = PeriodicWorkRequestBuilder<MyWorker>(
-            15, TimeUnit.MINUTES, // repeatInterval
+            15, TimeUnit.SECONDS, // repeatInterval
             5, TimeUnit.MINUTES // flexInterval
         )
             .setConstraints(constraints)
