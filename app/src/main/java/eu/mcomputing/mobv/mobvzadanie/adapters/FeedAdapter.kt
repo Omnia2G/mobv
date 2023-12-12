@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import eu.mcomputing.mobv.mobvzadanie.R
@@ -28,6 +30,9 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.item_text).text = items[position].name
         Log.d("wtf", items[position].name)
+        holder.itemView.setOnClickListener{
+           it.findNavController().navigate(R.id.action_profile_user)
+        }
     }
 
     // Vracia počet položiek v zozname

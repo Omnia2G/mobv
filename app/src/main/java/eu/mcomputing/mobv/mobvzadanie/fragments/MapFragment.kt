@@ -89,7 +89,7 @@ class MapFragment : Fragment() {
     private fun onMapReady(enabled: Boolean) {
         binding.mapView.getMapboxMap().setCamera(
             CameraOptions.Builder()
-                .center(Point.fromLngLat(14.3539484, 49.8001304))
+                .center(Point.fromLngLat(48.133952238450654, 17.20260048310285))
                 .zoom(2.0)
                 .build()
         )

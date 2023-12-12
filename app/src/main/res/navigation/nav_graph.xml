@@ -44,7 +44,12 @@
     <fragment
         android:id="@+id/feedFragment"
         android:name="eu.mcomputing.mobv.mobvzadanie.fragments.FeedFragment"
-        android:label="FeedFragment" />
+        android:label="FeedFragment">
+        <action
+            android:id="@+id/action_profile_user"
+            app:popUpToInclusive="true"
+            app:destination="@id/userFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/mapFragment"
@@ -59,6 +64,16 @@
             android:id="@+id/action_profile_intro"
             app:popUpToInclusive="true"
             app:destination="@id/introFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="eu.mcomputing.mobv.mobvzadanie.fragments.UserFragment"
+        android:label="UserFragment" >
+        <action
+            android:id="@+id/action_profile_user"
+            app:popUpToInclusive="true"
+            app:destination="@id/userFragment" />
     </fragment>
 
 

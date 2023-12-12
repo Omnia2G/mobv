@@ -11,13 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import eu.mcomputing.mobv.mobvzadanie.adapters.FeedAdapter
 import eu.mcomputing.mobv.mobvzadanie.data.DataRepository
-import eu.mcomputing.mobv.mobvzadanie.databinding.FragmentFeedBinding
+import eu.mcomputing.mobv.mobvzadanie.databinding.FragmentUserBinding
 import eu.mcomputing.mobv.mobvzadanie.viewmodels.FeedViewModel
 import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
 
-class FeedFragment : Fragment() {
+class UserFragment : Fragment() {
     private lateinit var viewModel: FeedViewModel
-    private lateinit var binding: FragmentFeedBinding
+    private lateinit var binding: FragmentUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class FeedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFeedBinding.inflate(inflater, container, false)
+        binding = FragmentUserBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,7 +45,7 @@ class FeedFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             model = viewModel
         }.also { bnd ->
-            bnd.bottomBar.setActive(BottomBar.FEED)
+            //bnd.bottomBar.setActive(BottomBar.FEED)
 
             bnd.feedRecyclerview.layoutManager = LinearLayoutManager(context)
             val feedAdapter = FeedAdapter()
@@ -57,12 +57,12 @@ class FeedFragment : Fragment() {
                 feedAdapter.updateItems(items ?: emptyList())
             }
 
-            bnd.pullRefresh.setOnRefreshListener {
+            /*bnd.pullRefresh.setOnRefreshListener {
                 viewModel.updateItems()
             }
             viewModel.loading.observe(viewLifecycleOwner) {
                 bnd.pullRefresh.isRefreshing = it
-            }
+            }*/
 
         }
 

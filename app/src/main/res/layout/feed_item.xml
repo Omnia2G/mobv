@@ -16,11 +16,11 @@
 
     <TextView
         android:id="@+id/item_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         app:layout_constraintStart_toEndOf="@id/item_image"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Text"
-        android:layout_marginStart="@dimen/activity_horizontal_margin" />
+        tools:text="Text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

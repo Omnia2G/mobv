@@ -20,4 +20,5 @@
     <string name="odhlasit_sa">Odhlasit sa</string>
     <string name="ukaz_hash">Ukaz hash</string>
     <string name="hash_hint">Heslo</string>
+    <string name="zadanie">Zadanie</string>
 </resources>

@@ -12,86 +12,85 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp">
+        android:background="@color/moonstone">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profile"
             android:layout_margin="@dimen/activity_vertical_margin"
-            app:layout_constraintTop_toTopOf="@id/load_profile_btn"
+            android:text="@string/profile"
             app:layout_constraintBottom_toBottomOf="@id/load_profile_btn"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/load_profile_btn" />
 
         <TextView
             android:id="@+id/name"
-            android:text="@{model.userResult.username}"
-            app:layout_constraintTop_toBottomOf="@id/textView"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@{model.userResult.username}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView" />
 
         <Button
             android:id="@+id/load_profile_btn"
-            android:text="@string/nacitaj_profil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/nacitaj_profil"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="@dimen/activity_horizontal_margin" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/location_label"
-            android:text="Share my location"
-            android:layout_margin="@dimen/activity_vertical_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/location_switch"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:text="Share my location"
             app:layout_constraintBottom_toBottomOf="@id/location_switch"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/location_switch" />
 
         <androidx.appcompat.widget.SwitchCompat
-            android:layout_margin="16dp"
             android:id="@+id/location_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_margin="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name" />
 
 
         <Button
             android:id="@+id/logout_btn"
-            android:text="@string/odhlasit_sa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/odhlasit_sa"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/location_switch"
-            android:layout_margin="@dimen/activity_horizontal_margin" />
+            app:layout_constraintTop_toBottomOf="@id/location_switch" />
 
 
         <TextView
             android:id="@+id/hash_preview"
-            android:text=""
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
+            android:text=""
             android:textColor="@android:color/holo_green_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logout_btn"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/logout_btn" />
 
         <EditText
             android:id="@+id/hash"
             android:layout_width="0dp"
-            android:minHeight="48dp"
             android:layout_height="wrap_content"
             android:hint="@string/hash_hint"
+            android:minHeight="48dp"
             android:text=""
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hash_preview"
-             />
+            app:layout_constraintTop_toBottomOf="@id/hash_preview" />
 
         <Button
             android:id="@+id/hash_btn"
@@ -108,8 +107,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -127,7 +127,7 @@ class DataRepository private constructor(
                     cache.insertUserItems(
                         listOf(
                             UserEntity(
-                                user.id, user.username, "", 48.134123686140605, 17.2033322430135, 0.0, ""
+                                user.id, user.username, "", 48.13393075744861, 17.202611211938684, 0.0, ""
                             )
                         )
                     )
